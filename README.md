@@ -38,6 +38,15 @@ npm i && bower i
 >>> js命名为./directive/js/test.js
 >>> less命名为./directive/less/test.less
 
+# 0.1.1新增功能 #
+> 增加,删除controller模版
+> 增加,删除serivce模版
+> 增加,删除directive模版
+>>* directive/html
+>>* directive/less
+>>* directive/js
+> 维护requirejs的配置文件main.js
+
 
 
 
