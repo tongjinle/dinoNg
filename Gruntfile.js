@@ -111,7 +111,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('produce',function(){
 		grunt.task.run([
-			'compile',
+			'less',
 			'requirejs',
 			'connect:produce'
 		]);
