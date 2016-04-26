@@ -41,9 +41,9 @@ npm i && bower i
 ***
 # 0.1.1新增功能 #
 > 增加,删除controller模版
-	node scaff -add -c ctrl1
-	node scaff -remove -c ctrl1
-	node scaff -destroy -c ctrl1
+>>	`node scaff -add -c ctrl1`
+>>	`node scaff -remove -c ctrl1`
+>>	`node scaff -destroy -c ctrl1`
 > 增加,删除serivce模版
 	node scaff -add -s service1
 	node scaff -remove -s service1
