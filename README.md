@@ -40,23 +40,24 @@ npm i && bower i
 
 ***
 # 0.1.1新增功能 #
-
-## 增加,删除controller模版
->*	`node scaff -add -c ctrl1`
->*	`node scaff -remove -c ctrl1`
->*	`node scaff -destroy -c ctrl1`
-
-## 增加,删除serivce模版
->*	`node scaff -add -s service1`
->*	`node scaff -remove -s service1`
->*	`node scaff -destroy -s service1`
-
-## 增加,删除directive模版
->*	`node scaff -add -d service1`
->*	`node scaff -remove -d service1`
->*	`node scaff -destroy -d service1`
-
+========
 ## 维护requirejs的配置文件main.js
+
+### 增加,删除controller模版
+>*	`node tool -a add -c abc`
+>*	`node tool -a remove -c abc`
+
+### 增加,删除serivce模版
+>*	`node tool -a add -s abc`
+>*	`node tool -a remove -s abc`
+
+### 增加,删除directive模版
+>*	`node tool -a add -d abc`
+>*	`node tool -a remove -d abc`
+
+
+
+
 ***
 
 
