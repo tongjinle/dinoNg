@@ -15,7 +15,7 @@ module.exports = function(){
 		alias: alias
 	};
 	var argv = minimist(process.argv.slice(2), opts);
-	console.dir(argv);
+	//console.dir(argv);
 
 	var action = argv.action;
 	var controller = argv.controller;
@@ -37,7 +37,7 @@ module.exports = function(){
 		'add controller': function(action, type, name, cb) {
 
 			var file = resolveFile(type,name);
-			var fullName = /Ctrl$/.test(name) ? name : name + 'Ctrl';
+			var fullName = name.replace(/Ctrl$/g,'');
 			var content = template(type).replace(/<%=\s?ctrlName\s?%>/,fullName);
 
 			addFile(file, content);
@@ -45,21 +45,18 @@ module.exports = function(){
 		},
 		'remove controller': function(action, type, name, cb) {
 			var file = resolveFile(type,name);
-			var fullName = /Ctrl$/.test(name) ? name : name + 'Ctrl';
 			removeFile(file);
 			defineFile(action,type,name);
 		},
 		'add service':function(action, type, name){
 			var file = resolveFile(type,name);
-			var fullName = /Service$/.test(name) ? name : name + 'Service';
+			var fullName = name.replace(/Service$/g,'');
 			var content = template(type).replace(/<%=\s?serviceName\s?%>/,fullName);
-			console.log(fullName,content);
 			addFile(file,content);
 			defineFile(action,type,name);
 		},
 		'remove service':function(action,type,name){
 			var file = resolveFile(type,name);
-			var fullName = /Service$/.test(name) ? name : name + 'Service';
 			removeFile(file);
 			defineFile(action,type,name);
 		},
@@ -132,10 +129,18 @@ module.exports = function(){
 			arr.forEach((n,i)=>{
 				arr2.push(n);
 				if(re.test(n)){
+					// directive 特殊化处理
+					if(type == 'directive'){
+						type = type +'/script';
+					}
 					arr2.push(`\t\t${fullName}:'./${type}/${fullName}',`);
 				}
 			});
 		}else if(action == 'remove'){
+			// directive 特殊化处理
+			if(type == 'directive'){
+				type = type +'/script';
+			}
 			re = new RegExp(`${fullName}:'./${type}/${fullName}'`);
 			arr.forEach((n,i)=>{
 				if(!re.test(n)){
