@@ -35,32 +35,44 @@ module.exports = function(){
 
 	var dict = {
 		'add controller': function(action, type, name, cb) {
+			var pureName = name.replace(/Ctrl$/g,'');
+			var fullName = pureName+'Ctrl';
 
-			var file = resolveFile(type,name);
-			var fullName = name.replace(/Ctrl$/g,'');
-			var content = template(type).replace(/<%=\s?ctrlName\s?%>/,fullName);
+			var file = resolveFile(type,fullName);
+			var content = template(type).replace(/<%=\s?ctrlName\s?%>/,pureName);
 
 			addFile(file, content);
-			defineFile(action,type,name);
+			defineFile(action,type,pureName);
 		},
 		'remove controller': function(action, type, name, cb) {
-			var file = resolveFile(type,name);
+			var pureName = name.replace(/Ctrl$/g,'');
+			var fullName = pureName+'Ctrl';
+
+			var file = resolveFile(type,fullName);
 			removeFile(file);
-			defineFile(action,type,name);
+			defineFile(action,type,pureName);
 		},
 		'add service':function(action, type, name){
-			var file = resolveFile(type,name);
-			var fullName = name.replace(/Service$/g,'');
-			var content = template(type).replace(/<%=\s?serviceName\s?%>/,fullName);
+			var pureName = name.replace(/Service$/g,'');
+			var fullName = pureName + 'Service';
+
+			var file = resolveFile(type,fullName);
+			var content = template(type).replace(/<%=\s?serviceName\s?%>/,pureName);
 			addFile(file,content);
-			defineFile(action,type,name);
+			defineFile(action,type,pureName);
 		},
 		'remove service':function(action,type,name){
-			var file = resolveFile(type,name);
+			var pureName = name.replace(/Service$/g,'');
+			var fullName = pureName+'Service';
+
+			var file = resolveFile(type,fullName);
 			removeFile(file);
-			defineFile(action,type,name);
+			defineFile(action,type,pureName);
 		},
 		'add directive':function(action,type,name){
+			var pureName = name;
+			var fullName = name;
+
 			var jsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.js'].join('\\');
 			var jsContent = template(type+".js").replace(/<%=\s?name\s?%>/g,name);
 			addFile(jsFile,jsContent);
@@ -78,13 +90,15 @@ module.exports = function(){
 
 		},
 		'remove directive':function(action,type,name){
+			var pureName = name;
+			var fullName = name;
+
 			var jsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.js'].join('\\');
 			removeFile(jsFile);
 			defineFile(action,type,name);
 
 			var lessFile = [path.resolve(__dirname, '..\\'+type+'\\less'), name+'.less'].join('\\');
 			removeFile(lessFile);
-
 			
 			var htmlFile = [path.resolve(__dirname, '..\\'+type+'\\html'), name+'.html'].join('\\');
 			removeFile(htmlFile);
@@ -124,24 +138,17 @@ module.exports = function(){
 		var arr = content.split('\n');
 		var arr2 = [];
 		var re;
+		var subfoldder = type == 'directive'?'/script':'';
 		if(action == 'add'){
 			re = new RegExp('\/\/\\s?'+type);
 			arr.forEach((n,i)=>{
 				arr2.push(n);
 				if(re.test(n)){
-					// directive 特殊化处理
-					if(type == 'directive'){
-						type = type +'/script';
-					}
-					arr2.push(`\t\t${fullName}:'./${type}/${fullName}',`);
+					arr2.push(`\t\t${fullName}:'./${type}${subfoldder}/${fullName}',`);
 				}
 			});
 		}else if(action == 'remove'){
-			// directive 特殊化处理
-			if(type == 'directive'){
-				type = type +'/script';
-			}
-			re = new RegExp(`${fullName}:'./${type}/${fullName}'`);
+			re = new RegExp(`${fullName}:'./${type}${subfoldder}/${fullName}'`);
 			arr.forEach((n,i)=>{
 				if(!re.test(n)){
 					arr2.push(n);
