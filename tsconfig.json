@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "declaration": true,
+        "outDir": "dist/js",
+        "target": "es5",
+        "module": "amd",
+        "noEmitOnError": true
+    },
+    "files": [
+        "script/app.ts",
+        "script/main.ts",
+        "script/route.ts",
+        "directive/script/test.ts",
+        "controller/testCtrl.ts",
+        "service/testService.ts"
+    ]
+}

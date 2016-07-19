@@ -3,9 +3,33 @@ module.exports = function (grunt) {
 	// show elapsed time at the end  
 	require('time-grunt')(grunt);  
 	// load all grunt tasks  
-	require('load-grunt-tasks')(grunt);  
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	require('load-grunt-tasks')(grunt);
+
+	// typescript 
+	var tsSource = ['script/**/*.ts','directive/script/**/*.ts','controller/**/*.ts','service/**/*.ts'];
+	var tsDist = 'dist/js/';  
+
+	// less
+	var lessSource = ['less/**/*.less', 'directive/less/**/*.less'];
+	var lessDist = 'css/bundle.css';
+
+
+	// watchPathList
+	var watchPathList = {
+		'main':['main.html','main-dev.html'],
+		'html':['view/**/*.{html,htm}','directive/**/*.{html,htm}'],
+		'css':'css/bundle.css',
+		'js':'dist/**/*.js'
+	};
+	var arr = [];
+	for(var key in watchPathList){
+		arr = arr.concat(watchPathList[key]);
+	}
+	console.log(arr);
+
+	// livereload
+	var livereload = '';
+
 
 	grunt.initConfig({ 
 		watch: {  
@@ -13,29 +37,21 @@ module.exports = function (grunt) {
 				options: {  
 					livereload: '<%= connect.options.livereload %>'    
 				},  
-				files: [
-					'main.html',
-					'view/**/*.{html,htm}', 
-					'directive/**/*.{html,htm}', 
-					'css/bundle.css',
-					'directive/**/*.js',
-					'script/**/*.js', 
-					'service/**/*.js',
-					'controller/**/*.js'
-				]  
+				files: watchPathList
 			},
 			less:{
-				files:[
-					'less/**/*.less',
-					'directive/less/**/*.less'
-				],
+				files:lessSource,
 				tasks:["less"]
+			},
+			typescript:{
+				files:tsSource,
+				tasks:['typescript']
 			}
 		},
 		less:{
 			dev:{
 				files:{
-					"css/bundle.css":'<%= watch.less.files %>'
+					lessDist:lessSource
 				}
 			}
 		} ,
@@ -89,13 +105,38 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		typescript: {
+			base: {
+				src: tsSource,
+				dest: tsDist,
+				options: {
+					generateTsConfig :true,
+					module: 'amd', //or commonjs 
+					target: 'es5', //or es3 
+					sourceMap: true,
+					declaration: true
+				}
+			}
+		},
+		typedoc: {
+			base: {
+				src: '<%= typescript.base.src %>',
+				options: {
+					module: '<%= typescript.base.options.module %>',
+					out: './docs',
+					name: 'my-doc',
+					target: '<%= typescript.base.options.target %>'
+				}
+			}
+},
 		
 	   
 	});  
 
 	grunt.registerTask('serve', function () {  
 		grunt.task.run([  
-			'less',  
+			'less',
+			'typescript',  
 			'connect:livereload',  
 			'watch'
 		]);  

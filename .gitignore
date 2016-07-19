@@ -54,3 +54,5 @@ directive/dist/
 service/dist/
 controller/dist/
 css/*.css
+docs/
+dist/

@@ -13,7 +13,9 @@
     "grunt-contrib-watch": "~0.5.3",
     "load-grunt-tasks": "~0.1.0",
     "time-grunt": "~0.1.1",
-    "grunt-jsdoc": "^1.1.0"
+    "grunt-jsdoc": "^1.1.0",
+    "grunt-typedoc": "^0.2.3",
+    "grunt-typescript": "^0.8.0"
   },
   "main": "index.js",
   "scripts": {
