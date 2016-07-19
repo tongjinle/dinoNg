@@ -1,21 +1,28 @@
 var template = {
 	controller:
 	`
-define(['app'],function(app,test){
-	app.controller('<%= ctrlName %>Ctrl',['$scope',function(scope){
+/// <reference path="../../typings/index.d.ts" />
+
+define(['app'],(app:angular.IModule)=>{
+	app.controller('<%= ctrlName %>Ctrl',['$scope',(scope)=>{
 
 	}]);
 });
+
 	`,
 	service:
 	`
-define(['app'],function(app){
-	app.service('<%= serviceName %>Service',[function(){
-		this.version = function(){
-			return 'lingmall scaffolding version 0.1.0';
+/// <reference path="../../typings/index.d.ts" />
+
+define(['app'], (app: angular.IModule) => {
+	app.service('<%= serviceName %>Service', function() {
+
+		this.get = () => {
+			return 'typescript angular';
 		};
-	}]);
+	});
 });
+
 	`
 	,
 	'directive.js':
@@ -30,6 +37,23 @@ define(['app'],function(app){
 				
 			}
 		};
+	}]);
+});
+
+/// <reference path="../../typings/index.d.ts" />
+
+define(['app'], (app: angular.IModule) => {
+	app.directive('<%= name %>', [() => {
+		let dire: angular.IDirective;
+		dire = {
+			restrict: 'E',
+			replace: false,
+			templateUrl: '/directive/html/<%= name %>.html',
+			link: (scope: any, el, attrs) => {
+				
+			}
+		};
+		return dire;
 	}]);
 });
 	`
