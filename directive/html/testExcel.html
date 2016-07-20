@@ -1,0 +1,16 @@
+<div>
+<!-- bind CellCursor to scope.x -->
+<!-- table need tablindex attribute for directive catch keydown events. -->
+<table class="table-data" tabindex="0" cell-cursor="excelDataCursor" cell-cursor-copy="excelDataCursor.getSelectedCellValues()|cellCursorToTsv"  cell-cursor-paste="excelDataCursor.setSelectedCellValues($data)" >
+    <tbody><!-- cursor can move in tbody -->
+        <tr ng-repeat="i in excelData">
+            <td >{{i.id}}</td>
+            <td cell-cursor-options="{getter:getName(i),setter:setName(i)}">{{i.name}}</td>
+            <!-- <td cell-cursor-options="{setter:setName(i)}">{{i.name}}</td> -->
+
+        </tr>
+    </tbody>
+</table>
+<!-- you can access CellCursor Object -->
+cursor=[{{excelDataCursor.selected.cursor.row}},{{excelDataCursor.selected.cursor.col}}]
+</div>

@@ -18,8 +18,8 @@
     "underscore": "~1.8.3",
     "jquery": "~2.1.4",
     "angular-route": "~1.4.8",
-    "requirejs": "~2.1.22"
+    "requirejs": "~2.1.22",
+    "cell-cursor": "git://github.com/team-lab/cell-cursor.git#^0.0.4"
   },
-  "authors": [
-  ]
+  "authors": []
 }

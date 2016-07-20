@@ -73,9 +73,9 @@ module.exports = function(){
 			var pureName = name;
 			var fullName = name;
 
-			var jsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.js'].join('\\');
-			var jsContent = template(type+".js").replace(/<%=\s?name\s?%>/g,name);
-			addFile(jsFile,jsContent);
+			var tsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.ts'].join('\\');
+			var tsContent = template(type+".ts").replace(/<%=\s?name\s?%>/g,name);
+			addFile(tsFile,tsContent);
 			defineFile(action,type,name);
 
 			var lessFile = [path.resolve(__dirname, '..\\'+type+'\\less'), name+'.less'].join('\\');
@@ -93,8 +93,8 @@ module.exports = function(){
 			var pureName = name;
 			var fullName = name;
 
-			var jsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.js'].join('\\');
-			removeFile(jsFile);
+			var tsFile = [path.resolve(__dirname, '..\\'+type+'\\script'), name+'.ts'].join('\\');
+			removeFile(tsFile);
 			defineFile(action,type,name);
 
 			var lessFile = [path.resolve(__dirname, '..\\'+type+'\\less'), name+'.less'].join('\\');
@@ -126,12 +126,12 @@ module.exports = function(){
 	};
 
 	var resolveFile = (type,name,ext)=>{
-		ext = ext || 'js';
+		ext = ext || 'ts';
 		return [path.resolve(__dirname, '..\\', type), name+'.'+ext].join('\\');
 	};
 
 	var defineFile = (action,type,name) =>{
-		var file = path.resolve(__dirname,'..\\script\\main.js')
+		var file = path.resolve(__dirname,'..\\script\\main.ts')
 		var content = fs.readFileSync(file,'utf8');
 		var typeSuffix = type == 'controller' ? 'Ctrl' : type == 'service' ? 'Service' : type == 'directive' ? '' : null;
 		var fullName = new RegExp(typeSuffix+'$').test(name) ? name : name+typeSuffix;

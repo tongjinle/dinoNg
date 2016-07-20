@@ -11,6 +11,10 @@ module.exports = function (grunt) {
 
 	// less
 	var lessSource = ['less/**/*.less', 'directive/less/**/*.less'];
+	// -- VERDOR LESS
+	// START
+	lessSource.push('/bower_components/cell-cursor/cellCursor.css');
+	// END
 	var lessDist = 'css/bundle.css';
 
 
@@ -19,7 +23,7 @@ module.exports = function (grunt) {
 		'main':['main.html','main-dev.html'],
 		'html':['view/**/*.{html,htm}','directive/**/*.{html,htm}'],
 		'css':'css/bundle.css',
-		'js':'dist/**/*.js'
+		'js':'/dist/js/**/*.js'
 	};
 	var arr = [];
 	for(var key in watchPathList){
@@ -37,7 +41,7 @@ module.exports = function (grunt) {
 				options: {  
 					livereload: '<%= connect.options.livereload %>'    
 				},  
-				files: watchPathList
+				files: arr
 			},
 			less:{
 				files:lessSource,
@@ -51,17 +55,18 @@ module.exports = function (grunt) {
 		less:{
 			dev:{
 				files:{
-					lessDist:lessSource
+					'css/bundle.css':lessSource
 				}
 			}
 		} ,
 
 		connect: {  
 			options: {  
-				port: 9001,  
+				port: 9494,  
 				livereload: 35731,  
 				// change this to '0.0.0.0' to access the server from outside  
-				hostname: 'localhost'  
+				// hostname: '192.168.20.11'  
+				hostname:'localhost'
 			},  
 			livereload: {  
 				options: {  

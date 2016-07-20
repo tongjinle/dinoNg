@@ -12,7 +12,10 @@
         "script/main.ts",
         "script/route.ts",
         "directive/script/test.ts",
+        "directive/script/testExcel.ts",
         "controller/testCtrl.ts",
+        "controller/testExcelCtrl.ts",
+        "service/sinyooService.ts",
         "service/testService.ts"
     ]
 }
