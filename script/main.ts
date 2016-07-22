@@ -10,10 +10,12 @@ let config: RequireConfig = {
 		route: './script/route',
 
 		// controller
+		loginCtrl:'./controller/loginCtrl',
 		testExcelCtrl:'./controller/testExcelCtrl',
 		testCtrl: './controller/testCtrl',
 
 		// directive
+		login:'./directive/script/login',
 		testExcel:'./directive/script/testExcel',
 		test: './directive/script/test',
 

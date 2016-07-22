@@ -1,6 +1,10 @@
 /// <reference path="../typings/index.d.ts" />
 
-define(['app', 'testCtrl','testExcelCtrl'],
+define(['app',
+	'testCtrl',
+	'testExcelCtrl',
+	'loginCtrl'
+	],
 	(app: angular.IModule) => {
 		return {
 			init: () =>
@@ -14,7 +18,11 @@ define(['app', 'testCtrl','testExcelCtrl'],
 							templateUrl:'view/testExcel.html',
 							controller:'testExcelCtrl'
 						})
-						.otherwise('/testExcel');
+						.when('/login',{
+							templateUrl:'view/login.html',
+							controller:'loginCtrl'
+						})
+						.otherwise('/login');
 				}])
 		};
 	}

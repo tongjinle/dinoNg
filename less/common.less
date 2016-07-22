@@ -1,0 +1,17 @@
+.sinyoo{
+	@headerHeight:70px;
+	@logoFontSize:42px;
+	&.header{
+		height: @headerHeight;
+	}
+	&.logo{	
+		font-size: @logoFontSize;
+		line-height: @headerHeight;
+		color:black;
+		&::after{
+			content: "Sinyoo";
+			
+		}
+	}
+
+}
