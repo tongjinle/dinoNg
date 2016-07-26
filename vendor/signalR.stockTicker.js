@@ -16,8 +16,8 @@ jQuery.fn.flash = function (color, duration) {
         .animate({ backgroundColor: current }, duration / 2);
 };
 
-$(function () {
-
+// $(function () {
+var signalStart = function(){
     var ticker = $.connection.stockTicker, // the generated client-side hub proxy
         up = '▲',
         down = '▼',
@@ -123,4 +123,5 @@ $(function () {
                 ticker.server.reset();
             });
         });
-});
+// });
+};

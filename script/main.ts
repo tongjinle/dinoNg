@@ -51,7 +51,7 @@ require.config(config);
 
 
 
-requirejs(['app', 'route', 'jquery'], (app: angular.IModule, route: { init: Function }) => {
+requirejs(['app', 'route'], (app: angular.IModule, route: { init: Function }) => {
 	console.log('app');
 	route.init();
 	$(() => {
