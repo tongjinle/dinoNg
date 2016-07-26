@@ -15,6 +15,7 @@
         "directive/script/test.ts",
         "directive/script/testExcel.ts",
         "controller/loginCtrl.ts",
+        "controller/stockCtrl.ts",
         "controller/testCtrl.ts",
         "controller/testExcelCtrl.ts",
         "service/sinyooService.ts",
