@@ -23,11 +23,11 @@ define(['app',
 							templateUrl:'view/login.html',
 							controller:'loginCtrl'
 						})
-						.when('stock',{
+						.when('/stock',{
 							templateUrl:'view/stock.html',
 							controller:'stockCtrl'
 						})
-						.otherwise('/login');
+						.otherwise('/stock');
 				}])
 		};
 	}

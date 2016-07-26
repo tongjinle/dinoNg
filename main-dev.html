@@ -10,6 +10,16 @@
 		<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/bundle.css"/>
 		<link rel="stylesheet" type="text/css" href="/bower_components/cell-cursor/cellCursor.css">
+		
+		<script src="./dist/js/vendor/jquery-1.10.2.min.js"></script>
+		<script src="./dist/js/vendor/jquery.color-2.1.2.min.js"></script>
+		<script src="./dist/js/vendor/jquery.signalR-2.2.1.js"></script>
+		<script src="http://192.168.20.11:9494/signalr/hubs"></script>
+		<script>
+			jQuery.support.cors = false;
+			$.connection.hub.url = 'http://192.168.20.11:9494/signalr';
+		</script>
+		<!-- <script src="./vendor/SignalR.StockTicker.js"></script> -->
 	</header>
 	<body>
 		<div ng-view ></div>

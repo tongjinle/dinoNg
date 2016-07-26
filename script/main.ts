@@ -26,10 +26,12 @@ let config: RequireConfig = {
 
 		// vendor
 		'signalR':'./vendor/signalR',
-		'signalR.stock':'./vendor/signalR.stock',
+		'signalR.stockTicker':'./vendor/signalR.stockTicker',
 		'jquery-1.10.2':'./vendor/jquery-1.10.2.min',
 		'jquery.color':'./vendor/jquery.color-2.1.2.min',
 		'jquery.signalR':'./vendor/jquery.signalR-2.2.1',
+		'signalRHubs':'http://192.168.20.11:9494/signalr/hubs/',
+		'signalRHubs2':'./vendor/signalRHubs2',
 
 		// end tail
 		jquery: "/bower_components/jquery/dist/jquery.min"
@@ -40,7 +42,8 @@ let config: RequireConfig = {
 		angularExcel:["angular"],
 		'jquery.color':['jquery-1.10.2'],
 		'jquery.signalR':['jquery-1.10.2','jquery.color'],
-		'signalR.stock':['jquery-1.10.2','jquery.color','jquery.signalR']
+		'signalRHubs2':['signalRHubs'],
+		// 'signalR.stock':['jquery-1.10.2','jquery.color','jquery.signalR','signalRHubs','signalRHubs2']
 	}
 	
 };
