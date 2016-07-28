@@ -10,17 +10,20 @@ let config: RequireConfig = {
 		route: './script/route',
 
 		// controller
+		registerCtrl:'./controller/registerCtrl',
 		stockCtrl:'./controller/stockCtrl',
 		loginCtrl:'./controller/loginCtrl',
 		testExcelCtrl:'./controller/testExcelCtrl',
 		testCtrl: './controller/testCtrl',
 
 		// directive
+		register:'./directive/script/register',
 		login:'./directive/script/login',
 		testExcel:'./directive/script/testExcel',
 		test: './directive/script/test',
 
 		// service
+		userService:'./service/userService',
 		testService: './service/testService',
 		sinyooService:'./service/sinyooService',
 
@@ -51,14 +54,14 @@ require.config(config);
 
 
 
-requirejs(['app', 'route'], (app: angular.IModule, route: { init: Function }) => {
+requirejs(['app', 'route','jquery'], (app: angular.IModule, route: { init: Function },$:JQueryStatic) => {
 	console.log('app');
 	route.init();
 	$(() => {
 		angular.bootstrap(document.body, [app.name]);
 		console.log('dom ready');
 	});
-
+	
 });
 
 

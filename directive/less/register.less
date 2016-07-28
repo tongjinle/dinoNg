@@ -1,0 +1,152 @@
+@hotColor:rgb(23,182,241);
+register{
+	/**/
+	.header{
+		height: 120px;
+		border-bottom: 1px gray solid;
+		// box-shadow: 0 1px 0px gray;
+		.inner{
+			>*{
+				float: left;
+			}
+			width: 80%;
+			padding-top: 20px;
+			margin: 0 auto;
+			.logo{
+				margin-right: 200px;
+				display: inline-block;
+				
+			}
+			.banner{
+				margin-right: 20px;
+				display: inline-block;
+			}
+			.text{
+				margin-top: 50px;
+				display: inline-block;
+				text-align: center;
+				width: 300px;
+				color:@hotColor;
+				.big{
+					font-size: 18px;
+				}
+				.small{
+					font-size: 14px;
+				}
+			}
+			.link{
+				margin-left: 200px;
+				margin-top:50px;
+				display: inline-block;
+				font-size: 11px;
+			}
+		}
+	}
+
+	.main{
+		width: 100%;
+		.button{
+			background-color: rgb(243,151,0);
+			border-radius: 5px;
+			color: white;
+			text-align: center;
+			height: 40px;
+			line-height: 40px;
+			cursor: pointer;
+		}
+		.inner{
+			width: 60%;
+			margin: 0 auto;
+			.title{
+				margin-top: 70px;
+				margin-bottom: 50px;
+				font-size: 24px;
+				color:@hotColor;
+				text-align: center;
+				font-weight: 700;
+			}
+
+			.item{
+				display: flex;
+				margin:0 auto;
+				width: 60%;
+				height: 40px;
+				margin-bottom: 10px;
+				.left{
+					width: 120px;
+					text-align: right;
+					padding-right: 8px;
+					line-height: 40px;
+				}
+				&.first{
+					.middle{
+						input{
+							width: 60%;
+						}
+						.button{
+							width: 30%;
+							float: right;
+						}
+						
+					}
+				}
+				.middle{
+					width: 400px;
+					line-height: 40px;
+					padding: 0 10px;
+					text-align: left;
+					input{
+						border-radius: 5px;
+						height: 40px;
+						width: 100%;
+						padding-left: 10px;
+					}
+
+					
+				}
+				.right{
+					padding-left: 20px;
+					color: red;
+					width: 200px;
+					line-height: 40px;
+				}
+				&.confirm{
+					width: 60%;
+					margin:0 auto;
+					text-align: center;
+					.gou{
+						border:1px solid black;
+						margin-right: 10px;
+						cursor: pointer;
+					}
+				}
+				&.submit{
+					.middle{
+						.button{
+							width: 150px;
+							
+						}
+					}
+					margin-top: 30px;
+					margin-bottom: 70px;
+				}
+			}
+		}
+
+	}
+	.footer{
+		.inner{
+			width: 40%;
+			height: 100%;
+			align-items:center;
+			margin: auto;
+			justify-content:space-around;
+			display: flex;
+
+		}
+		height: 120px;
+		border-top: 1px solid gray;
+	}
+
+}
+	

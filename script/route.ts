@@ -4,7 +4,8 @@ define(['app',
 	'testCtrl',
 	'testExcelCtrl',
 	'loginCtrl',
-	'stockCtrl'
+	// 'stockCtrl'
+	'registerCtrl'
 	],
 	(app: angular.IModule) => {
 		return {
@@ -27,7 +28,11 @@ define(['app',
 							templateUrl:'view/stock.html',
 							controller:'stockCtrl'
 						})
-						.otherwise('/stock');
+						.when('/register',{
+							templateUrl:'view/register.html',
+							controller:'registerCtrl'
+						})
+						.otherwise('/register');
 				}])
 		};
 	}
