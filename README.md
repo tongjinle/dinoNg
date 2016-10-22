@@ -7,11 +7,11 @@
 
 ## 自动化工具 ##
 * npm
-* bower
 * grunt
 
 ## 安装 ##
-npm i && bower i 
+npm i grunt -g
+npm i 
 
 ## grunt任务 ##
 >* 默认启动开发模式
