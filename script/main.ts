@@ -2,8 +2,8 @@
 let config: RequireConfig = {
 	baseUrl: './dist/js',
 	paths: {
-		angular: '/bower_components/angular/angular',
-		angularRoute: "/bower_components/angular-route/angular-route.min",
+		angular: '/node_modules/angular/angular',
+		angularRoute: "/node_modules/angular-route/angular-route.min",
 		// base
 		app: './script/app',
 		route: './script/route',
@@ -18,7 +18,7 @@ let config: RequireConfig = {
 		testService: './service/testService',
 
 		// end tail
-		jquery: "/bower_components/jquery/dist/jquery.min"
+		jquery: "/node_modules/jquery/dist/jquery.min"
 	},
 	//加载顺序规则
 	shim: {
